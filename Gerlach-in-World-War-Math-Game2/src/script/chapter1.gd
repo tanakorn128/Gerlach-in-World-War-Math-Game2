@@ -7,7 +7,7 @@ func _ready():
 	$HUD.position.x = hud.x
 	$HUD.position.y = hud.y
 	var inst_scene3 = load("res://src/scene/scene3.tscn").instance()
-	add_child(inst_scene3)
+	#add_child(inst_scene3)
 	pass
 
 func _process(delta):

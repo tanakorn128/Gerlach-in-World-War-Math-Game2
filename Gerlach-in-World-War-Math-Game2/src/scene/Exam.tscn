@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/UI Pack RPG/buttonLong_grey.png" type="Texture" id=1]
 [ext_resource path="res://assets/UI Pack RPG/buttonLong_beige.png" type="Texture" id=2]
 [ext_resource path="res://assets/UI Pack RPG/panelInset_beigeLight.png" type="Texture" id=3]
+[ext_resource path="res://src/script/Exam.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
@@ -21,9 +22,8 @@ font_path = "res://assets/font/Kanit-Regular.ttf"
 size = 30
 font_data = SubResource( 4 )
 
-[node name="Mission1" type="Node2D" groups=[
-"mission",
-]]
+[node name="Mission1" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="answer1" type="Button" parent="."]
 margin_left = 41.0
@@ -153,3 +153,7 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="button_down" from="answer1" to="." method="_on_answer1_button_down"]
+[connection signal="button_down" from="answer2" to="." method="_on_answer2_button_down"]
+[connection signal="button_down" from="answer3" to="." method="_on_answer3_button_down"]
+[connection signal="button_down" from="answer4" to="." method="_on_answer4_button_down"]

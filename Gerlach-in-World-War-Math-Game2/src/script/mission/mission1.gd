@@ -8,6 +8,7 @@ func _process(delta):
 
 
 
-func _on_Area2D_body_exited(body):
-	print("T")
+
+func _on_Area2D_body_entered(body):
+	get_tree().change_scene("res://src/scene/Exam.tscn")
 	pass # Replace with function body.
