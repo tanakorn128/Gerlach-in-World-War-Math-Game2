@@ -1,28 +1,28 @@
 extends Node2D
 var exam : Dictionary
-
+var temp
 func _ready():
 	#print(random_exam())
 	random_exam()
 	pass
 
 func _on_answer1_button_down():
-	_answer(random_exam()["Correct"],random_exam()["answer1"])
+	_answer(temp["Correct"],temp["answer1"])
 	pass # Replace with function body.
 
 
 func _on_answer2_button_down():
-	_answer(random_exam()["Correct"],random_exam()["answer2"])
+	_answer(temp["Correct"],temp["answer2"])
 	pass # Replace with function body.
 
 
 func _on_answer3_button_down():
-	_answer(random_exam()["Correct"],random_exam()["answer3"])
+	_answer(temp["Correct"],temp["answer3"])
 	pass # Replace with function body.
 
 
 func _on_answer4_button_down():
-	_answer(random_exam()["Correct"],random_exam()["answer4"])
+	_answer(temp["Correct"],temp["answer4"])
 	pass # Replace with function body.
 func random_exam():
 	var rng = RandomNumberGenerator.new()
@@ -30,6 +30,7 @@ func random_exam():
 	var my_random_number : int = rng.randf_range(1, 5)
 	var ex = exam()[str(my_random_number)]
 	_show(ex["Question"],ex["answer1"],ex["answer2"],ex["answer3"],ex["answer4"])
+	temp = ex
 	return ex
 
 func _show(question,answer1,answer2,answer3,answer4):
@@ -98,3 +99,12 @@ func exam():
 	}
 	return exam
 	pass
+
+
+func _on_Timer_timeout():
+	if $TextureProgress.value > 0:
+		$TextureProgress.value -= 1
+	else:
+		random_exam()
+		$TextureProgress.value = 60
+	pass # Replace with function body.
