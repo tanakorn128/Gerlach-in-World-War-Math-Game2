@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/tileset-wesley.png" type="Texture" id=1]
+[ext_resource path="res://src/script/mission/mission1.gd" type="Script" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 3.21408, 35.1801, 9.53971, 32.3538, 15.0578, 32.4884, 21.6526, 33.0267, 28.7858, 35.1801, 31.4775, 37.199, 31.7467, 41.6404, 30.1317, 44.3321, 27.3053, 46.4855, 25.8323, 47.7204, 5.80564, 48, 1.768, 44.1673, 0.314453, 42.8752, 0.152946, 38.6761 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "tileset-wesley.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 32, 144, 32, 48 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 36.7439
+height = 132.837
+
+[node name="mission1" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 6, 6 )
+tile_set = SubResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 93.6974, 249.288 )
+rotation = -1.5708
+shape = SubResource( 3 )
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
